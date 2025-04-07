@@ -1,0 +1,163 @@
+import { useState } from "react";
+import "./App.css";
+import calImg from "./images/icon-calculator.svg";
+import resultImg from "./images/illustration-empty.svg";
+
+function App() {
+  const [mortgageAmount, setMortgageAmount] = useState("");
+  const [mortgageTerm, setMortgageTerm] = useState("");
+  const [interestRate, setInterestRate] = useState("");
+  const [mortgageType, setMortgageType] = useState("repayment");
+  const [result, setResult] = useState<{
+    monthlyRepayment: string;
+    totalRepayment: string;
+  } | null>(null);
+
+  const calculateRepayments = () => {
+    if (mortgageAmount && mortgageTerm && interestRate) {
+      const principal = parseFloat(mortgageAmount);
+      const monthlyInterestRate = parseFloat(interestRate) / 100 / 12;
+      const numberOfPayments = parseInt(mortgageTerm) * 12;
+
+      const monthlyRepayment =
+        (principal *
+          monthlyInterestRate *
+          Math.pow(1 + monthlyInterestRate, numberOfPayments)) /
+        (Math.pow(1 + monthlyInterestRate, numberOfPayments) - 1);
+
+      const totalRepayment = monthlyRepayment * numberOfPayments;
+
+      setResult({
+        monthlyRepayment: monthlyRepayment.toFixed(2),
+        totalRepayment: totalRepayment.toFixed(2),
+      });
+    } else {
+      setResult(null);
+    }
+  };
+
+  const clearAll = () => {
+    setMortgageAmount("");
+    setMortgageTerm("");
+    setInterestRate("");
+    setMortgageType("repayment");
+    setResult(null);
+  };
+
+  return (
+    <div className="mortgage-calculator">
+      <div className="calculator-container">
+        {/* Form Section */}
+        <div className="calculator-form rounded-bl-lg">
+          <div className="main-name">
+            <h2>Mortgage Calculator</h2>
+            <button className="clear-button" onClick={clearAll}>
+              Clear All
+            </button>
+          </div>
+          <div className="form-group">
+            <label>Mortgage Amount</label>
+            <div className="input-group">
+              <span>£</span>
+              <input
+                type="number"
+                value={mortgageAmount}
+                onChange={(e) => setMortgageAmount(e.target.value)}
+                placeholder="300"
+              />
+            </div>
+          </div>
+          <div className="form-group-row">
+            <div className="form-group">
+              <label>Mortgage Term</label>
+              <div className="input-group">
+                <input
+                  type="number"
+                  value={mortgageTerm}
+                  onChange={(e) => setMortgageTerm(e.target.value)}
+                  placeholder="25"
+                />
+                <span>years</span>
+              </div>
+            </div>
+            <div className="form-group">
+              <label>Interest Rate</label>
+              <div className="input-group">
+                <input
+                  type="number"
+                  value={interestRate}
+                  onChange={(e) => setInterestRate(e.target.value)}
+                  placeholder="5.25"
+                />
+                <span>%</span>
+              </div>
+            </div>
+          </div>
+          <div className="form-group">
+            <label>Mortgage Type</label>
+            <div className="radio-group-column">
+              <label>
+                <input
+                  type="radio"
+                  value="repayment"
+                  checked={mortgageType === "repayment"}
+                  onChange={(e) => setMortgageType(e.target.value)}
+                />
+                <span>Repayment</span>
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  value="interest-only"
+                  checked={mortgageType === "interest-only"}
+                  onChange={(e) => setMortgageType(e.target.value)}
+                />
+                <span>Interest Only</span>
+              </label>
+            </div>
+          </div>
+          <button className="calculate-button" onClick={calculateRepayments}>
+            <img
+              src={calImg}
+              alt="Calculator icon"
+              style={{ width: "20px", height: "20px" }}
+            />
+            Calculate Repayments
+          </button>
+        </div>
+
+        {/* Results Section */}
+        <div className="calculator-results rounded-tr-sm">
+          {result ? (
+            <div className="result-content">
+              <h3>Your results</h3>
+              <p>
+                Your results are shown below based on the information you
+                provided. To adjust the results, edit the form and click
+                "calculate repayments" again.
+              </p>
+              <div className="result-box">
+                <p>Your monthly repayments</p>
+                <h2>£{result.monthlyRepayment}</h2>
+                <hr />
+                <p>Total you'll repay over the term</p>
+                <h3>£{result.totalRepayment}</h3>
+              </div>
+            </div>
+          ) : (
+            <div className="result-placeholder">
+              <img src={resultImg} alt="Results placeholder" />
+              <h3>Results shown here</h3>
+              <p>
+                Complete the form and click "calculate repayments" to see what
+                your monthly repayments would be.
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default App;

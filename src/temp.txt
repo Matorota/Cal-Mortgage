@@ -1,0 +1,295 @@
+@import "tailwindcss";
+
+/* CSS WILL KILL ME */
+
+.main-name {
+  display: flex;
+  justify-content: space-between; /* Aligns "Mortgage Calculator" and "Clear All" */
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.main-name h2 {
+  font-size: 1.8rem; /* Increased font size */
+  color: #002b5c;
+  margin: 0;
+}
+
+.clear-button {
+  background: none;
+  border: none;
+  color: #007bff; /* Blue color for "Clear All" */
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 0.9rem; /* Slightly smaller font size */
+  margin: 0;
+  padding: 0;
+}
+
+.mortgage-calculator {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #f0f4f8, #e0e7ff);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.calculator-results {
+  background: #002b5c;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 40%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.calculator-results h3 {
+  margin-bottom: 10px;
+}
+
+.calculator-form {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 55%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.calculator-form h2 {
+  margin-bottom: 10px;
+  color: #002b5c;
+}
+
+.clear-button {
+  background: none;
+  border: none;
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #002b5c;
+}
+
+/* Align "Mortgage Term" and "Interest Rate" in a single row */
+.form-group-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.form-group-row .form-group {
+  flex: 1;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  border: 1px solid #d1e3f8;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f9fbfd;
+}
+
+.input-group span {
+  background: #eaf4fc;
+  padding: 10px 15px;
+  border-right: 1px solid #d1e3f8;
+  color: #002b5c;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.input-group input {
+  flex: 1;
+  padding: 10px 15px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: transparent;
+  color: #002b5c;
+}
+
+.input-group input::placeholder {
+  color: #a0b3c8;
+  font-size: 0.9rem;
+}
+
+/* Stack "Mortgage Type" options in a single column */
+.radio-group-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.radio-group-column label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #d1e3f8;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #f9fbfd;
+}
+
+.radio-group-column label:hover {
+  background: #eaf4fc;
+}
+
+.radio-group-column input {
+  margin: 0;
+}
+
+.radio-group-column span {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #002b5c;
+}
+
+.radio-group {
+  display: flex;
+  gap: 10px;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  background: #f9f9f9;
+}
+
+.radio-group input {
+  margin: 0;
+}
+
+.radio-group label:hover {
+  background: #e0e7ff;
+}
+
+.radio-group input:checked + span {
+  background: #ffc107;
+  color: #002b5c;
+}
+
+.calculate-button {
+  background: #d1f026; /* Bright greenish-yellow background */
+  border: none;
+  padding: 15px 30px; /* Adjust padding for a larger button */
+  border-radius: 50px; /* Fully rounded corners */
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem; /* Adjust font size */
+  color: #002b5c; /* Dark blue text color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Space between icon and text */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: background 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.calculate-button:hover {
+  background: #c4e022; /* Slightly darker shade on hover */
+}
+
+.calculate-button img {
+  width: 20px; /* Icon size */
+  height: 20px;
+}
+
+/* Container for Form and Results */
+.calculator-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 0;
+  font-family: Arial, sans-serif;
+  background: #f0f4f8;
+  border-radius: 16px;
+  overflow: hidden; /* Ensures rounded corners apply to children */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Section */
+.calculator-form {
+  background: #ffffff;
+  padding: 20px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Results Section */
+.calculator-results {
+  background: #002b5c;
+  color: white;
+  padding: 30px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.result-placeholder img {
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.result-placeholder p {
+  color: #a0b3c8;
+  font-size: 1rem;
+}
+
+.result-box {
+  background: #003b73;
+  padding: 20px;
+  border-radius: 8px;
+  border-top: 4px solid #ffc107;
+  text-align: left;
+}
+
+.result-box p {
+  font-size: 1rem;
+  color: #a0b3c8;
+  margin-bottom: 10px;
+}
+
+.result-box h2 {
+  font-size: 2.5rem;
+  color: #ffc107;
+  margin: 10px 0;
+}
+
+.result-box h3 {
+  font-size: 1.5rem;
+  color: white;
+  margin-top: 10px;
+}
+
+.result-box hr {
+  border: none;
+  border-top: 1px solid #a0b3c8;
+  margin: 20px 0;
+}
